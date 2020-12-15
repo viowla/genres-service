@@ -24,18 +24,13 @@ public class GenreController {
     private GenreService genreService;
 
     @GetMapping("/all")
-    @HystrixCommand(fallbackMethod = "getPayment",
-            threadPoolKey = "getPaymentPool",
-            threadPoolProperties = {
-                    @HystrixProperty(name="coreSize", value="20"),
-                    @HystrixProperty(name="maxQueueSize", value="10"),
-            })
-    public ResponseEntity<List<Genre>> getAllPayments() {
+
+    public ResponseEntity<List<Genre>> getAllGenres() {
         return new ResponseEntity<>(genreRepository.findAll(), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Genre> getPayment(@PathVariable String id) {
+    public ResponseEntity<Genre> getGenre(@PathVariable String id) {
         return new ResponseEntity<>(genreService.getGenre(id), HttpStatus.OK);
     }
 

@@ -16,8 +16,8 @@ public class GenreService {
     @Autowired
     private GenreRepository genreRepository;
 
-    @HystrixCommand(fallbackMethod = "getPayment",
-            threadPoolKey = "getPaymentPool",
+    @HystrixCommand(fallbackMethod = "getGenre",
+            threadPoolKey = "getGenrePool",
             threadPoolProperties = {
                     @HystrixProperty(name="coreSize", value="20"),
                     @HystrixProperty(name="maxQueueSize", value="10"),
